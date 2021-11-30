@@ -1,18 +1,18 @@
 import Head from 'next/head';
 import { useState, useEffect} from 'react';
 import * as Realm from "realm-web";
-import Category from '../components/Category';
-import Container from '../components/Container';
-import Header from '../components/Header';
-import Hero from '../components/Hero';
-import Pagination from '../components/Pagination';
-import Recipes from '../components/Recipes';
-import Footer from '../components/Footer';
+import Category from '../../components/Category';
+import Container from '../../components/Container';
+import Header from '../../components/Header';
+import Pagination from '../../components/Pagination';
+import Recipes from '../../components/Recipes';
+import Footer from '../../components/Footer';
 
 
 export default function Home() {
   const [recipes, setRecipes] = useState([])
   useEffect(async () => {
+    // const REALM_APP_ID = "recipes-epyqq";
     const REALM_APP_ID = process.env.NEXT_PUBLIC_REALM_APP_ID;
     const app = new Realm.App({ id: REALM_APP_ID });
     const credentials = Realm.Credentials.anonymous();
@@ -28,15 +28,14 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
       <Head>
-        <title>Рецепты</title>
+        <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="bg-white w-full min-h-screen">
       <Header />
       <Container>
-        <Hero />
         <Category
-        category="Рецепты"
+        category="Все рецепты"
         categoryCount={`${recipes.length} Рецептов`} 
         />
 
